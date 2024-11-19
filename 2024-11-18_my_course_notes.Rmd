@@ -17,6 +17,17 @@ knitr::opts_chunk$set(echo = TRUE)
     -   6 are presumptive *Klebsiella*
     -   6 are presumptive *Escherichia coli*
 
+    ## Installation of packages
+
+    ```{r}
+
+   # install.packages("here")
+   # install.packages("DiagrammeR")
+      
+
+
+    ```
+
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -27,12 +38,30 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
-## Including Plots
-
 You can also embed plots, for example:
+ctrl + alt +I ( make a cell - short cut on the keyboard)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+angry_or_not<-"not"
+```
+gives  the content 
+
+Madelaine, are you angry_or_not? `r angry_or_not`
+
+# working with your data
+
+```{r}
+here::here()
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+path_data<-here::here("data", "2024-09-25_INIKA_SAMPLING_ANALYSIS_HUMAN.csv")
+```
+
+```{r}
+human_data<-
+  readr::read_csv2(path_data)
+
+```
+
