@@ -64,4 +64,40 @@ human_data<-
   readr::read_csv2(path_data)
 
 ```
+#Day 3
 
+
+## Packages into memory
+```{r}
+library(here)
+library (tidyverse)
+```
+
+
+```{r}
+?library()
+```
+
+## Exploration of a dataframe 
+```{r}
+
+colnames(human_data)
+```
+- overview of data and data types
+```{r}
+dput(
+  colnames(human_data)
+  )
+```
+- explanation: c() is to make vectors
+
+```{r}
+test<-c("one","2", 3)
+test
+
+typeof(test)
+class(test)
+
+
+```
+All the elements of a vector are of the same type ( tesxt, double0REAL, integer, data,,,) 

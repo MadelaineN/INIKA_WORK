@@ -1,0 +1,49 @@
+---
+title: "Labwork"
+author: "Madelaine Norström"
+date: "2024-11-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Course Part 1 Laboratory Monday
+-   We selected 20 isolates 
+
+    -   8 are presumptive ***Salmonella***
+    -   6 are presumptive *Klebsiella*
+    -   6 are presumptive *Escherichia coli*
+
+-   Results Wednesday
+<!--
+Picture of results
+![](Files/VITECK RESULTS19_11_2024.pdf)
+-->
+<!--I have make a link to a file -->
+
+[linked pdf](Files/VITECK RESULTS19_11_2024.pdf)
+
+Nine isolates were confirmed as *E.coli or S.enterica*
+-Preparing for DNA extraction on Thursday , who are responsible for which strains
+E= Emmanuel
+
+M= Maulid
+
+A= Annah
+
+C=Camilla
+
+
+A2 E.coli E
+A4 E.coli M
+B3 E.coli A
+C1 Salmonella E
+C2 E.coli M
+C4 Salmonella 
+D1 E.coli C
+D2 E.coli C
+D4 Salmonella A
+
