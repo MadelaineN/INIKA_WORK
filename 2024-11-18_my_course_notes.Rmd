@@ -28,15 +28,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
     ```
 
-## R Markdown
+# ctrl + alt + I 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
 
 You can also embed plots, for example:
 ctrl + alt +I ( make a cell - short cut on the keyboard)
@@ -56,7 +49,7 @@ here::here()
 ```
 
 ```{r}
-path_data<-here::here("data", "2024-09-25_INIKA_SAMPLING_ANALYSIS_HUMAN.csv")
+path_data<-here::here("data","2024-09-25_INIKA_SAMPLING_ANALYSIS_HUMAN.csv")
 ```
 
 ```{r}
@@ -91,6 +84,10 @@ dput(
 ```
 - explanation: c() is to make vectors
 
+## Getting help with packages and what does a function do
+
+F1
+
 ```{r}
 test<-c("one","2", 3)
 test
@@ -119,31 +116,165 @@ test2*test2
 test2*c(1,2)
 
 ```
-Overview of data and data types in your data
+
+- explanation: c() is to make vectors
+
+```{r}
+test <- c("one", "2", 3)
+test
+typeof(test)
+class(test)
+```
+- figure out if the character is numeric or text or something else
+- what type of objects do we have?
+
+# sign for an assignment: <-
+
+```{r}
+test <- c("one", "2", 3)
+test
+test[3]
+typeof(test[3])
+
+class(test)
+```
+All the elements of a vector are of the same `type`(text, double = real, integer, date ....)
+
+```{r}
+test2 <- c(1,2,3)
+typeof(test2)
+class(test2)
+test2*test2
+```
+
+```{r}
+test2 * c(1,2)
+```
+
+- deactivate the output in the markdown document; in the document settings near the knit button: only select `Chunk output in console`
+
+- overview of the data and the data types in your data
+
 ```{r}
 glimpse(human_data)
 str(human_data)
 ```
 
-select data
-```human_data_selection <- 
-  human_data %>%
-  select(INIKA_OH_TZ_ID, Age__yrs, Gender, Enter_a_date, Region, District, 
-         Specify_if_other_district, Sample, Season, Origin_of_sample, 
-         Which_class_grade_are_you, 
-         Who_is_your_caretaker, 
-         If_others__mention, 
-         What_is_your_occupation_and_or_of_your_caretaker, 
-         Have_you_ever_heard_about_AMR, If_yes__how_did_you_get_this_information, 
-         Have_you_or_your_children_used_any_antibiotics_at_any_time, 
-         If_yes__where_did_you_get_these_drugs_from,
-         If_it_was_drug_sellers_or_pharmacy__did_you_have_a_prescription_from_the_doctor_prescriber,
-         GPS_coordinates_latitude, GPS_coordinates_longitude) 
+- need to reduce the number of columns
 
-human_data_selection %>% View()
+- clean the data for spaces
 
+```{r}
+original_names <- colnames(human_data)
+original_names
 ```
 
+- replace ALL spaces with underscores
+
+```{r}
+library(tidyverse)
+new_names <- str_replace_all(original_names, " ", "_")
+new_names
+new_names[88]
+```
+- regex pattern (regular expression)
+- what criteria to use to choose what to exchange in your data? need to know your data and check your file while you do the replacements to see if it looks like you expect
+
+```{r}
+new_names2 <- str_replace_all(
+  new_names, "[?/,;.*()-]", "_") %>% 
+  str_remove_all("(^_*)|(_*$)")
+new_names2
+new_names2[88]
+```
+
+```{r}
+colnames(human_data) <- new_names2
+```
+
+- learn how to select columns and transfer the dataset we need to reduce the size of the table
+
+```{r}
+human_data %>% 
+  select(INIKA_OH_TZ_ID, Age__yrs_, Gender, ) %>% 
+  head()
+```
+
+
+```{r}
+human_data_selection <- 
+  human_data %>% 
+  select(INIKA_OH_TZ_ID, Age__yrs_, Gender, Enter_a_date, Region, District, 
+         Specify_if_other_district, Sample, Season, Origin_of_sample, Which_class_grade_are_you__, 
+         Who_is_your_caretaker__, 
+         If_others__mention, 
+         What_is_your_occupation_and_or_of_your_caretaker__, 
+         Have_you_ever_heard_about_AMR_, If_yes__how_did_you_get_this_information_, 
+         Have_you_or_your_children_used_any_antibiotics_at_any_time_, 
+         If_yes__where_did_you_get_these_drugs_from_,
+         If_it_was_drug_sellers_or_pharmacy__did_you_have_a_prescription_from_the_doctor_prescriber_,
+        GPS_coordinates) 
+
+human_data_selection %>% View()
+human_data_selection %>% head()
+```
+
+<--should have done changes to the file before running the last command to remove _ at the end of the header text-->
+
+new_columns <- 
+  colnames(human_data) %>%
+  str_replace_all(" ", "_") %>%
+  str_replace_all( "[?/,;.*()-]", "_") %>%
+  str_remove_all("(^_*)|(_*$)")
+
+
+- looking at the structure of your data
+
+```{r}
+glimpse(human_data_selection)
+str(human_data_selection)
+```
+
+- remove empty columns or somethings that do not make sense
+
+```{r}
+human_data_selection <- 
+  human_data_selection %>% 
+  select(-Specify_if_other_district) %>% 
+  mutate_at(vars(Age__yrs_), as.integer) %>% 
+  mutate_if(is.character, factor) %>% 
+  mutate_at(vars(INIKA_OH_TZ_ID), as.character)
+```
+
+- mutate: want to change the data type for the INIKA_OH_TZ_ID from numerical to text/chr/integer
+- categorical variable vs character (bivariable)
+- when happy; reassign the code from human_data_selection %>% to <- and remove str() before ``` at the end of the code. We will pipe in the beginning when you work on the code to figure out what to change or remove in your data. 
+
+- want a summary of the contents of the data:
+
+```{r}
+summary(
+  human_data_selection
+  )
+```
+
+- filter out values/data
+
+```{r}
+human_data_selection %>% 
+  filter(INIKA_OH_TZ_ID == "238")
+```
+
+- delete the filtered value: 
+
+```{r}
+human_data_selection %>% 
+  filter(INIKA_OH_TZ_ID != "238") %>% 
+  filter(is.na(Gender))
+  #summary() 
+  #%>% 
+  #View()
+```
 
 
 
