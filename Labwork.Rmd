@@ -9,45 +9,53 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Course part 1 - Laboratory (Monday)
 
-# Course Part 1 Laboratory Monday
--   We selected 20 isolates 
+-   We selected and sub-cultured 20 isolates from the -80 freezer
+    -   8 presumptive *Salmonella* spp. isolates
+    -   6 presumptive *E. coli* isolates
+    -   6 presumptive *Klebsiella* spp. isolates
 
-    -   8 are presumptive ***Salmonella***
-    -   6 are presumptive *Klebsiella*
-    -   6 are presumptive *Escherichia coli*
+# Course part 2 - Laboratory (Wednesday)
 
--   Results Wednesday
+- The Vitek machine was run on Tuesday (three times due to problems with the control)
+- For most isolates the results were fine on the last run
+  - No ID; no bacteria or not able to identify
+  - We have not correlated the number and species ID from the VITEK to what was entered on the plates (would be nice to have the presumptive species to compare)
+  
+## Picture of species identification results
 <!--
-Picture of results
-![](Files/VITECK RESULTS19_11_2024.pdf)
+![](files/VITEK_RESULTS19_11_2024.pdf)
 -->
-<!--I have make a link to a file -->
 
-[linked pdf](Files/VITECK RESULTS19_11_2024.pdf)
+<!-- this is to view a file or an image in the document when it is knitted
+![integrated pdf](files/VITEK_RESULTS19_11_2024.pdf)
+-->
 
+! means I want to view
 
+# opens the file, makes a link, so you can view the file
 
+<!-- have made a link to the file?? -->
+[linked pdf](Files/VITEK_RESULTS19_11_2024.pdf)
 
-Nine isolates were confirmed as *E.coli or S.enterica*
--Preparing for DNA extraction on Thursday , who are responsible for which strains
-E= Emmanuel
+# better to save as an image (png) rather than a pdf
+![results1](Files/VITECK RESULTS19_11_2024_Page_1.png)
 
-M= Maulid
+![results2](Files/VITECK RESULTS19_11_2024_Page_2.png)
+Nine isolates were confirmed species ID for DNA extraction on Thursday; six *E. coli* and three *Salmonella enterica*:
 
-A= Annah
+E - Emmanuel, M - Maulid, A - Anna, C - Camilla 
 
-C=Camilla
+- - A2 - E
+- - A4 - M
+- - B3 - A
+- - C1 - E
+- - C2 - C
+- - C4 - M
+- - D1 - C
+- - D2 - C
+- - D4 - A
 
+Sub-culturing of strains for DNA extraction was performed on Tuesday 19.11.2024
 
-A2 E.coli E
-A4 E.coli M
-B3 E.coli A
-C1 Salmonella E
-C2 E.coli C
-C4 Salmonella M
-D1 E.coli C
-D2 E.coli C
-D4 Salmonella A
-
-Subculturing of strains for DNA extraction were done 19.11.24
