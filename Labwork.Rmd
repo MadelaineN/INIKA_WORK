@@ -24,12 +24,13 @@ knitr::opts_chunk$set(echo = TRUE)
   - We have not correlated the number and species ID from the VITEK to what was entered on the plates (would be nice to have the presumptive species to compare)
   
 ## Picture of species identification results
+
 <!--
 ![](files/VITEK_RESULTS19_11_2024.pdf)
--->
 
-<!-- this is to view a file or an image in the document when it is knitted
+this is to view a file or an image in the document when it is knitted
 ![integrated pdf](files/VITEK_RESULTS19_11_2024.pdf)
+
 -->
 
 ! means I want to view
@@ -40,10 +41,12 @@ knitr::opts_chunk$set(echo = TRUE)
 [linked pdf](Files/VITEK_RESULTS19_11_2024.pdf)
 
 # better to save as an image (png) rather than a pdf
-![results1](Files/VITECK RESULTS19_11_2024_Page_1.png)
 
-![results2](Files/VITECK RESULTS19_11_2024_Page_2.png)
-Nine isolates were confirmed species ID for DNA extraction on Thursday; six *E. coli* and three *Salmonella enterica*:
+![results1](Files/VITECK_RESULTS19_11_2024_1.png)
+
+![results2](Files/VITECK_RESULTS19_11_2024_2.png)
+Nine isolates were confirmed species ID for DNA extraction on Thursday; six 
+*E. coli* and three *Salmonella enterica*:
 
 E - Emmanuel, M - Maulid, A - Anna, C - Camilla 
 
