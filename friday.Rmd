@@ -1,0 +1,87 @@
+---
+title: "Merging_Data_Whonet"
+author: "Madelaine Norström"
+date: "2024-11-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Import data saved as rds ( r file format)
+
+object_name <- readRDS("path/to/file/filename.rds)
+
+```{r}
+#install.packages("RSQLite")
+
+```
+
+
+```{r}
+library(tidyverse)
+library(here)
+library(RSQLite)
+library(dplyr)
+```
+"C:/Users/15NORSTR/Documents/
+
+```{r}
+here::here()
+
+```
+# from KOBOTOOLBOX_Questionaire
+
+```{r}
+human_selection<-readRDS("C:/Users/15NORSTR/Documents/Gitprosjekter/INIKA_WORK/data/human_data_selection_dedup.rds")
+```
+
+
+```{r}
+here::here("data")
+human_selection<-readRDS(
+  here::here("data","human_data_selection_dedups.rds"))
+```
+```{r}
+sqlite_path<-"C:/WHONET/Data/TZA-INIKA_TZ-2024.sqlite"
+sqlite_path
+dbconn <- DBI::dbConnect(
+  RSQLite::SQLite(), sqlite_path
+  )
+                    
+
+```
+<!--
+```{r}
+dbconn
+```
+--!>
+```{r}
+dbListTables(dbconn)
+```
+
+```{r}
+isolates_tbl <- tbl(dbconn, "Isolates")
+```
+```{r}
+mydata_recipie<-tbl(dbconn, "Isolates")
+str(mydata_recipie)
+head(mydata_recipie)
+
+```
+```{r}
+show_query(mydata_recipie)
+```
+```{r}
+mydata <- mydata_recipie%>% collect()
+```
+ 
+```{r}
+my_innerjoin <- 
+  human_selection %>% 
+  # selecting few columns for testing
+  #  this can be used to do a short selection of the columns if not all are required
+  # select(1:3) %>% 
+  dplyr::inner_join(mydata, by = c("INIKA_OH_TZ_ID" = "PATIENT_ID"))
+```

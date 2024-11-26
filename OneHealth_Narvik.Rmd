@@ -1,0 +1,58 @@
+---
+title: "OneHealthSeminar"
+author: "Madelaine Norström"
+date: "2024-11-25"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Data from recording to analyzing in a OneHealth context, challenges and possibilities
+ - Dr. Madelaine Norström
+ Norwegian Veterinary Institute
+
+## What is OneHealth?: —
+ - Definition
+ - "an integrated approach recognizing the connection between human, animal, and environmental health"
+ 
+## One Health concept
+ - Healthy animals, Healthy Environment, Healthy Humans
+ - Epidemiological studies :To show an association between two variables is not the same as a causation
+ 
+ - Whole Genome sequencing: Will also not show a causation
+ - 
+ 
+## Why Data Matters: Briefly mention the importance of  in addressing global health challenges (e.g., zoonotic diseases, climate change, pandemics)
+ - Data integration
+
+## Research Studies
+ - Unique Identifier of the samples and obtained agents needed
+ - Timely sampling 
+
+## Challenges
+ - Ethical approval needed in particular for sampling humans. Norwegian ethical clearance if the Project has a Norwegian project leader.
+ - Timeliness 
+ - Data sharing
+ - Collaboration
+ - 
+
+
+## Outbreak investigations
+ - Data sharing
+ 
+## F
+ - A
+ 
+
+
+## bb
+ - A
+ - B
+
+
+
+
