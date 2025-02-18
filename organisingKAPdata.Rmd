@@ -13,7 +13,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 `
 # This below isn't working but I save it.``
-```{r}
 #Testnames<-INIKA_SURVEY_CORRECTIDS %>%
 #  names()
 #remove_dummies<-Testnames[str_detect(Testnames, "\\/")]
@@ -22,18 +21,22 @@ knitr::opts_chunk$set(echo = TRUE)
 #filter(!is.na(INIKA_OH_TZ_ID)) 
 
 ```
+
 ```{r}
 #install.packages("here")
 #install.packages("DiagrammeR")
 library(tidyverse)
                  
 ```
+
 ```{r}
 here::here()
 ```
+
 ```{r}
 path_data<-here::here("outputDataset", "INIKAKAT.csv")
 ```
+
 ```{r}
 
 library(readxl)
@@ -74,11 +77,6 @@ write.csv(INIKAKAP, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosj
 
 ```
 
-
-
-
-
-
 ```{r}
 
 new_columns <- 
@@ -91,22 +89,21 @@ new_columns <-
 
 ```
 
-
-
 ```{r}
 # Step 3: Replacing the column names
 colnames(INIKAKAP) <- new_columns
 colnames(INIKAKAP)
 ```
+
 ```{r}
 
 # Rename columns that have the same base name
 colnames(INIKAKAP) <- make.names(colnames(INIKAKAP), unique = TRUE)
 ```
+
 ```{r}
 str(INIKAKAP)
 ```
-
 
 ```{r}
 remove_df<-INIKAKAP%>%
@@ -120,10 +117,6 @@ remove_df<-INIKAKAP%>%
   filter(V1 == 0)
 ```
 
-
-
-
-
 ```{r}
 
 INIKAnew<-INIKAKAP%>%
@@ -132,19 +125,16 @@ INIKAnew<-INIKAKAP%>%
 
 
 ```
+
 ```{r}
 colnames(INIKANEW)
 ```
-
-
-
 
 ```{r}
 
 test<-KAPREST$GPS_Latitude 
 view(test)
 ```
-
 
 ```{r}
 QUEST<-INIKAnew%>%
@@ -213,6 +203,7 @@ write.csv(QUEST, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekt
 
  
 ```
+
 ```{r}
 Test<-QUEST%>%
 select(INIKA_OH_TZ_ID, Have_you_ever_heard_about_One_Health)%>%
@@ -781,6 +772,7 @@ mutate(Know_IF_AB_GrowthP_AMR=case_when(Know_IF_AB_GrowthP_AMR== "yes__to_a_degr
 
 
 ```
+
 ```{r}
 INIKA<-INIKAKAT%>%
   select(-starts_with("Tap_to_record"))
@@ -822,9 +814,6 @@ write.csv(combined_frequenciesQUEST, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-ak
 
 ```
 
-
-
-
 ```{r}
 KAP_Demo <- INIKAKAT%>% 
   select(INIKA_OH_TZ_ID,Respondent,FarmPurp,Age_R,Gender_R,Status_R,Ethnic_R,Education_R,Occupation_R,Gender_F,Status_F,
@@ -835,8 +824,6 @@ KAP_Demo <- INIKAKAT%>%
 ```{r}
 colnames(INIKAKAT)
 ```
-
-
 
 ```{r}
 KAP_Knowledge<- INIKAKAT%>%        
@@ -855,20 +842,18 @@ Preventing_AMR_Biosecurity,
 
 ```
 
- 
-
 ```{r}
 KAP_OH<-INIKAKAT%>%        
       select (INIKA_OH_TZ_ID,Heard_OH,Explanation_OH,Broiler_Disease_Outbreak_Human_Health,Knowledge_Collaborative_OH ,, Explaination_Collaborative_OH, Participation_Training_OH, Explain_Training_content_OH)
         
 ```
 
-
 ```{r}
 KAP_ATTITUDE<-INIKAKAT%>%        
         select (INIKA_OH_TZ_ID,Concern_AMR_FarmProductivity,Correct_AB_Usage,Overusage_AB_Poultry,
          AMR_Knowledge_Perception,Know_IF_AB_Usage_AMR,Know_IF_AB_GrowthP_AMR)
 ```
+
 ```{r}
 KAP_Practises<-INIKAKAT%>% 
   select(INIKA_OH_TZ_ID,Practices_AB_Causes_AMR,Administer_AB_Consult_Animal_HEALTH, Administer_AB_Knowhow,Purpose_of_Broiler_F,Feed_use,Time_Since_Chichensick, Disease_Last_time, Usage_OF_AB, Usage_OF_AB_Frequency, Where_do_you_obtain_antibiotics, Feed_use_Others, Time_Since_Chichensick, Usage_OF_AB, Usage_OF_AB_Frequency, Never_usage_Know 
@@ -877,7 +862,6 @@ KAP_Practises<-INIKAKAT%>%
                                                                                                                                                                 
 )                                                                                                                                                                                                                                                     
 
-```{r}
 KAP_ECO<-INIKAKAT%>%        
       select (INIKA_OH_TZ_ID,Support, SUPPORT_RATE,
 SOURCE_INFO_AMR,SOURCE_AMR_RATE ,
@@ -889,6 +873,7 @@ KAP_GENDER<-INIKAKAT%>%
   select (INIKA_OH_TZ_ID,GENDERSROLE,REASON_GENDERBROILER)
   
 ```
+
 ```{r}
 KAP_POTENTIAL<-%>% 
   select (INIKA_OH_TZ_ID,)
@@ -914,7 +899,6 @@ Preventing_AMR_Biosecurity,-
 
 ```
 
-
 ```{r}
 get_frequencies <- function(df) {
   freq_list <- lapply(df, function(col) {
@@ -939,16 +923,21 @@ combined_frequencies <- bind_rows(
 )
 
 ```
-                                                                                                                                                                            )
+
+```         
+                                                                                                                                                                        )
+```
+
 ```{r}
   KAPOH_FREK<-KAP_OH%>%
   select(-INIKA_OH_TZ_ID)  
 ```
-        
+
 ```{r}
 KAP_ATT<-KAP_ATTITUDE%>%
 select(-INIKA_OH_TZ_ID)  
 ```
+
 ```{r}
 # Apply the function to the dataset
 frequencies <- get_frequencies(KAP_ATT)
@@ -963,12 +952,14 @@ combined_frequenciesATT <- bind_rows(
 )
 
 ```
+
 ```{r}
 
 
 write.csv(INIKAKAT, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekter/31218_INIKA_OH_TZ/WP2/INIKAKATNEW.csv", sep = ""))
 
 ```
+
 ```{r}
 write.csv(KAP_Demo, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekter/31218_INIKA_OH_TZ/WP2/KAP_Demo.csv", sep = ""))
 write.csv(KAP_ECO, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekter/31218_INIKA_OH_TZ/WP2/KAP_ECO.csv", sep = ""))
@@ -978,5 +969,3 @@ write.csv(KAP_OH, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjek
 write.csv(KAP_Practises, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekter/31218_INIKA_OH_TZ/WP2/KAP_Practise.csv", sep = ""))
 write.csv(KAPREST, file = paste("K:/FAG/Tverrfaglig/AMR/FoU-aktiviteter & prosjekter/31218_INIKA_OH_TZ/WP2/KAP_Rest.csv", sep = ""))
 ```
-
-
